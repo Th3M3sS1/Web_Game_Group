@@ -76,4 +76,13 @@ public class PlayerController : LivingEntity
                 TakeDamage(20.0f);
         }
     }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(20.0f);
+        }
+    }
 }
