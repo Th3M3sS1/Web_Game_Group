@@ -8,14 +8,16 @@ public class MenuScript : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-
-        if(GameManager.instance)
-            GameManager.instance.ContinueGame();
     }
 
     public void QuitGame()
     {
         Debug.Log("Quit Game");
         Application.Quit();
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

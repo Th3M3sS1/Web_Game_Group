@@ -15,6 +15,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    public GameObject playerHealthBar;
+
+    [SerializeField]
+    PlayerController pc;
+
+    
+
     private void Start()
     {
         currentState = GameState.GameRun;
@@ -22,6 +29,13 @@ public class GameManager : MonoBehaviour
 
         if (instance == null)
             instance = this;
+
+        SavedData data = SaveSystem.LoadGame();
+
+        if (data.levelToLoad == "Level1")
+        {
+            LoadGame(data);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -44,6 +58,8 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         currentState = GameState.GamePause;
+
+        playerHealthBar.SetActive(false);
     }
 
     public void ContinueGame()
@@ -52,10 +68,25 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         currentState = GameState.GameRun;
+
+        playerHealthBar.SetActive(true);
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void SaveGame()
+    {
+        //save player pos
+        SaveSystem.SaveGame(pc, 3);
+        //save enemy pos
+        //save inventory
+    }
+
+    public void LoadGame(SavedData data)
+    {
+        pc.transform.position = new Vector3(data.playerPos[0], data.playerPos[1], data.playerPos[2]);
     }
 }

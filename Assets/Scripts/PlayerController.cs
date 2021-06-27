@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : LivingEntity
 {
     public CharacterController controller;
 
     public float maxSpeed = 10.0f;
-    public float gravity = -30.0f;
+    public float gravity = -10.0f;
     public float jumpHeight = 3.0f;
 
     public Transform groundCheck;
@@ -27,13 +27,18 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentHealth = maxHealth;
+        healthBar.fillAmount = currentHealth / maxHealth;
+
+        transform.position = new Vector3(0.0f, 3.0f, 0.0f);
     }
 
     // Update is called once per frame - once every 16.6666ms
 
     void Update()
     {
-        if (GameManager.instance.currentState != GameManager.GameState.GamePause)
+        if (GameManager.instance.currentState == GameManager.GameState.GameRun)
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
 
@@ -66,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
             cam.transform.localRotation = Quaternion.Euler(XRotation, 0.0f, 0.0f);
             transform.Rotate(Vector3.up * mouseX);
+
+            if (Input.GetKeyUp(KeyCode.M))
+                TakeDamage(20.0f);
         }
     }
 }
