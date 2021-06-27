@@ -52,12 +52,15 @@ public class ZombieBehaviour : MonoBehaviour
         {
             animator.SetInteger("AnimState", (int)CryptoState.RUN);
         }
+
+        Debug.Log(Vector3.Distance(transform.position, player.transform.position));
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Collision occured");
             HasLOS = true;
             player = other.transform.gameObject;
         }
