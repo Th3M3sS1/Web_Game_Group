@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 10837237480078941}
   - component: {fileID: 10837237480078938}
   - component: {fileID: 10837237480078939}
+  - component: {fileID: 804100813}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -238,6 +239,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10837237480078936}
   m_Enabled: 1
+--- !u!114 &804100813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10837237480078936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfed220e9b785ce48a55736dfdabc894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  controlSensitivity: 3
+  playerBody: {fileID: 10837237565701288}
 --- !u!1 &10837237550458957
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +423,9 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   healthBar: {fileID: 0}
+  joystick: {fileID: 0}
+  horizontalSensitivity: 1
+  verticalSensitivity: 1
   controller: {fileID: 10837237565701291}
   maxSpeed: 10
   gravity: -25
@@ -419,7 +438,7 @@ MonoBehaviour:
   isGrounded: 0
   mouseSensitivity: 10
   cam: {fileID: 10837237480078938}
-  sceneData: {fileID: 11400000, guid: 56e335dc35259cb49a98c04f2601f5e6, type: 2}
+  miniMap: {fileID: 0}
 --- !u!136 &336604466
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerController : LivingEntity
 {
+    [Header("Controls")]
+    public Joystick joystick;
+    public float horizontalSensitivity;
+    public float verticalSensitivity;
+
     public CharacterController controller;
 
     public float maxSpeed = 10.0f;
@@ -20,7 +25,10 @@ public class PlayerController : LivingEntity
     public float mouseSensitivity = 10.0f;
     public Camera cam;
 
-    private float XRotation = 0.0f;
+    //private float XRotation = 0.0f;
+
+    [Header("MiniMap")]
+    public GameObject miniMap;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +52,20 @@ public class PlayerController : LivingEntity
                 velocity.y = -2.0f;
             }
 
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
+            //Input for WebGL and Desktop
+            //float x = Input.GetAxis("Horizontal");
+            //float z = Input.GetAxis("Vertical");
+
+            //Input for Mobile
+            float x = joystick.Horizontal;
+            float z = joystick.Vertical;
+
+
+            velocity.y += gravity * Time.deltaTime;
+
+            controller.Move(velocity * Time.deltaTime);
+
+
 
             Vector3 move = transform.right * x + transform.forward * z;
 
@@ -53,13 +73,14 @@ public class PlayerController : LivingEntity
 
             if (Input.GetButton("Jump") && isGrounded)
             {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+                
             }
 
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
 
+            /* //Moved this script to cam controller
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
@@ -68,11 +89,29 @@ public class PlayerController : LivingEntity
 
             cam.transform.localRotation = Quaternion.Euler(XRotation, 0.0f, 0.0f);
             transform.Rotate(Vector3.up * mouseX);
+            */
 
             if (Input.GetKeyUp(KeyCode.M))
                 TakeDamage(20.0f);
         }
     }
+
+    //mobile control code to jump
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+        }
+    }
+
+    //mobile control code to toggle minimap
+    public void ToggleMiniMap()
+    {
+        //toggle the MiniMap on/off\
+        miniMap.SetActive(!miniMap.activeInHierarchy);
+    }
+
 
 
     void OnTriggerEnter(Collider other)
