@@ -62,7 +62,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: f820bf45a24881c41993b559f4e415df, type: 2}
   m_TargetDisplay: 0
@@ -419,6 +419,7 @@ MonoBehaviour:
   isGrounded: 0
   mouseSensitivity: 10
   cam: {fileID: 10837237480078938}
+  sceneData: {fileID: 11400000, guid: 56e335dc35259cb49a98c04f2601f5e6, type: 2}
 --- !u!136 &336604466
 CapsuleCollider:
   m_ObjectHideFlags: 0

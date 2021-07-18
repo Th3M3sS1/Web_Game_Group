@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bce92c798983704cb88fce8fb9ea164, type: 3}
+  m_Name: Level1SceneData
+  m_EditorClassIdentifier: 
+  sceneToLoad: Vamsi_Scene
+  playerPos: {x: 13.470134, y: 3.0004184, z: -27.573818}
+  playerHealth: 100
+  newLevel: 0

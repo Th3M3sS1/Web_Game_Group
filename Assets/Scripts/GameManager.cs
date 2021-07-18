@@ -20,22 +20,28 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     PlayerController pc;
 
-    
+    public SceneDataSO sceneData;
 
     private void Start()
     {
         currentState = GameState.GameRun;
         pauseMenu.SetActive(false);
 
+        if (!sceneData.newLevel)
+        {
+            pc.transform.position = sceneData.playerPos;
+            pc.currentHealth = sceneData.playerHealth;
+        }
+        else
+        {
+            pc.transform.position = new Vector3(0.0f, 3.0f, 0.0f);
+            pc.currentHealth = pc.maxHealth;
+        }
+
         if (instance == null)
             instance = this;
 
-        SavedData data = SaveSystem.LoadGame();
-
-        if (data.levelToLoad == "Level1")
-        {
-            LoadGame(data);
-        }
+        ContinueGame();
     }
     // Update is called once per frame
     void Update()
@@ -79,14 +85,10 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
-        //save player pos
-        SaveSystem.SaveGame(pc, 3);
-        //save enemy pos
-        //save inventory
-    }
+        Debug.Log("Game Savaed");
+        sceneData.sceneToLoad = SceneManager.GetActiveScene().name;
 
-    public void LoadGame(SavedData data)
-    {
-        pc.transform.position = new Vector3(data.playerPos[0], data.playerPos[1], data.playerPos[2]);
+        sceneData.playerPos = pc.transform.position;
+        sceneData.playerHealth = pc.currentHealth;
     }
 }

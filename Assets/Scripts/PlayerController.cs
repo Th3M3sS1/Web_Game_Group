@@ -26,12 +26,9 @@ public class PlayerController : LivingEntity
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;        
 
-        currentHealth = maxHealth;
         healthBar.fillAmount = currentHealth / maxHealth;
-
-        transform.position = new Vector3(0.0f, 3.0f, 0.0f);
     }
 
     // Update is called once per frame - once every 16.6666ms

@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public SceneDataSO sceneData;
     public void PlayGame()
     {
+        sceneData.newLevel = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
@@ -18,6 +20,7 @@ public class MenuScript : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        sceneData.newLevel = false;
+        SceneManager.LoadScene(sceneData.sceneToLoad);
     }
 }
