@@ -10,7 +10,6 @@ public enum CryptoState
     RUN
 }
 
-
 public class ZombieBehaviour : MonoBehaviour
 {
     [Header("Line of Sight")] 
@@ -20,6 +19,8 @@ public class ZombieBehaviour : MonoBehaviour
 
     private NavMeshAgent agent;
     private Animator animator;
+
+    public float health = 50f;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,20 @@ public class ZombieBehaviour : MonoBehaviour
             HasLOS = true;
             player = other.transform.gameObject;
         }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        if(health <= 0f)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
 }
