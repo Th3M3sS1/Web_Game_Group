@@ -32,6 +32,15 @@ public class ZombieBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Vector3.Distance(transform.position, player.transform.position) < 20)
+        {
+            HasLOS = true;
+        }
+        else
+        {
+            HasLOS = false;
+        }
+
         if (HasLOS)
         {
             agent.SetDestination(player.transform.position);
