@@ -30,6 +30,9 @@ public class PlayerController : LivingEntity
     [Header("MiniMap")]
     public GameObject miniMap;
 
+    [Header("Inventory")]
+    public GameObject Inventory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +115,12 @@ public class PlayerController : LivingEntity
         miniMap.SetActive(!miniMap.activeInHierarchy);
     }
 
+    //mobile control code to toggle Inventory
+    public void ToggleInventory()
+    {
+        //toggle the Inventory on/off\
+        Inventory.SetActive(!Inventory.activeInHierarchy);
+    }
 
 
     void OnTriggerEnter(Collider other)
