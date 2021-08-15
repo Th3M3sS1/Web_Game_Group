@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : LivingEntity
 {
@@ -35,6 +36,9 @@ public class PlayerController : LivingEntity
     [Header("Inventory")]
     public GameObject Inventory;
 
+    [Header("Gun")]
+    public GunScript gun;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +65,11 @@ public class PlayerController : LivingEntity
             //float x = Input.GetAxis("Horizontal");
             //float z = Input.GetAxis("Vertical");
 
+            /*if(Input.GetMouseButtonDown(0))
+            {
+                gun.Fire();
+            }*/
+
             //Input for Mobile
             float x = joystick.Horizontal;
             float z = joystick.Vertical;
@@ -78,7 +87,7 @@ public class PlayerController : LivingEntity
 
             if (Input.GetButton("Jump") && isGrounded)
             {
-                
+                Jump();
             }
 
             velocity.y += gravity * Time.deltaTime;
@@ -139,4 +148,9 @@ public class PlayerController : LivingEntity
         }
     }
     */
+
+    public override void OnDeath()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

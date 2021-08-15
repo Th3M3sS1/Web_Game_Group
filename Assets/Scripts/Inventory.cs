@@ -8,6 +8,9 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryObject;
     public Slot[] slots;
 
+    public KeyQuest key;
+    public ChestQuest chest;
+
     private void Update()
     {   
 
@@ -89,7 +92,18 @@ public class Inventory : MonoBehaviour
         if (col.GetComponent<Item>())
         {
             Additem(col.GetComponent<Item>());
+
             SoundManager.PlaySound("collect");
+
+            if(col.GetComponent<Item>().itemId == 2)
+            {
+                key.CompleteQuest();
+            }
+
+            else if(col.GetComponent<Item>().itemId == 1)
+            {
+                chest.CompleteQuest();
+            }
         }
     }
 

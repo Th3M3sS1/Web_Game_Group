@@ -10,5 +10,4 @@ public class Item : MonoBehaviour
     public int maxStackSize = 100;
 
     public int itemId;
-
 }

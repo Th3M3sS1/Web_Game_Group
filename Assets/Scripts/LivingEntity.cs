@@ -13,7 +13,7 @@ public class LivingEntity : MonoBehaviour, IDamagable
 
     public virtual void OnDeath()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public virtual void TakeDamage(float damage)

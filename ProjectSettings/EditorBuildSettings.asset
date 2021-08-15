@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Vamsi_Scene.unity
     guid: f950c0d7bf98a4846929590b1257e6c4
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: d96cf0931137be04e8522efcdb01058a
   m_configObjects: {}

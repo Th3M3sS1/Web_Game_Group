@@ -27,6 +27,8 @@ public class ZombieBehaviour : MonoBehaviour
     public float AttackRate = 3f;
     private float nextTimeToAttack = 0f;
 
+    public EnemyQuest quest;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +97,7 @@ public class ZombieBehaviour : MonoBehaviour
 
     void Die()
     {
+        quest.KillZombie();
         Destroy(gameObject);
     }
 
