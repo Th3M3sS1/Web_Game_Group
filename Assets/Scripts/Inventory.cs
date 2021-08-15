@@ -89,6 +89,7 @@ public class Inventory : MonoBehaviour
         if (col.GetComponent<Item>())
         {
             Additem(col.GetComponent<Item>());
+            SoundManager.PlaySound("collect");
         }
     }
 

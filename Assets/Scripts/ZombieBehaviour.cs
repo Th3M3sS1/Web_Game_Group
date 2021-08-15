@@ -13,7 +13,7 @@ public enum CryptoState
 public class ZombieBehaviour : MonoBehaviour
 {
     [Header("Line of Sight")] 
-    public bool HasLOS;
+    public bool HasLOS = false;
 
     public GameObject player;
 
@@ -21,6 +21,11 @@ public class ZombieBehaviour : MonoBehaviour
     private Animator animator;
 
     public float health = 50f;
+    public float distanceToPlayer;
+    public float attackDistance = 2.5f;
+
+    public float AttackRate = 3f;
+    private float nextTimeToAttack = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +35,9 @@ public class ZombieBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        /*
         if(Vector3.Distance(transform.position, player.transform.position) < 20)
         {
             HasLOS = true;
@@ -39,31 +45,33 @@ public class ZombieBehaviour : MonoBehaviour
         else
         {
             HasLOS = false;
-        }
+        } 
+        */
 
         if (HasLOS)
         {
             agent.SetDestination(player.transform.position);
+            distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         }
 
 
-        if(HasLOS && Vector3.Distance(transform.position, player.transform.position) < 2.5)
+        if (HasLOS && distanceToPlayer <= attackDistance)
         {
-                // could be an attack
+            // could be an attack
             animator.SetInteger("AnimState", (int)CryptoState.IDLE);
             transform.LookAt(transform.position - player.transform.forward);
+            Attack();
 
-            if (agent.isOnOffMeshLink)
-            {
-                //animator.SetInteger("AnimState", (int)CryptoState.JUMP);
-            }
         }
-        else
+        else if (HasLOS && distanceToPlayer > attackDistance)
         {
             animator.SetInteger("AnimState", (int)CryptoState.RUN);
         }
+        else
+        {
+            animator.SetInteger("AnimState", (int)CryptoState.IDLE);
+        }
 
-        //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
     }
 
     void OnTriggerEnter(Collider other)
@@ -89,6 +97,24 @@ public class ZombieBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void Attack()
+    {
+        if (Time.time >= nextTimeToAttack)
+        {
+            nextTimeToAttack = Time.time + AttackRate; //take damage for every 3 sec
+            PlayerDamage();
+        }
+
+    }
+
+    void PlayerDamage()
+    {
+        player.GetComponent<PlayerController>().TakeDamage(10f);
+        SoundManager.PlaySound("hurt");
+    }
+
+
 
 }
 

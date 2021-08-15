@@ -25,6 +25,8 @@ public class PlayerController : LivingEntity
     public float mouseSensitivity = 10.0f;
     public Camera cam;
 
+    public float distanceToPlayer;
+
     //private float XRotation = 0.0f;
 
     [Header("MiniMap")]
@@ -123,11 +125,18 @@ public class PlayerController : LivingEntity
     }
 
 
+    //Take Damge of player implemented in ZombieBehaviour
+    /*
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        distanceToPlayer = Vector3.Distance(transform.position, other.transform.position);
+        if (other.gameObject.CompareTag("Enemy") && distanceToPlayer < 3.2f)
         {
             TakeDamage(20.0f);
+            SoundManager.PlaySound("hurt");
+            //distanceToPlayer = 10f;
+            Debug.Log("Hurt");
         }
     }
+    */
 }

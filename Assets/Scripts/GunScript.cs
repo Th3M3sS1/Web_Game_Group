@@ -14,17 +14,21 @@ public class GunScript : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactStoneEffect;
     public GameObject impactFleshEffect;
+    public AudioSource audio;
 
     private float nextTimeToFire = 0f;
+
 
     public void Shoot()
     {
         muzzleFlash.Play();
+        //SoundManager.PlaySound("firing");
+        //audio = GetComponent<AudioSource>();
+        audio.Play();
         RaycastHit Hit;
         if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out Hit, range))
         {
-            
-            //Debug.Log(Hit.transform.name);
+           
             ZombieBehaviour zb = Hit.transform.GetComponent<ZombieBehaviour>();
             if(zb != null)
             {
@@ -53,6 +57,7 @@ public class GunScript : MonoBehaviour
         {
             nextTimeToFire = Time.time + (1f / fireRate);
             Shoot();
+            SoundManager.PlaySound("firing");
         }
 
     }
