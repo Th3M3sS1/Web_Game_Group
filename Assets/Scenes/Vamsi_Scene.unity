@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -497,7 +497,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1981915524}
+<<<<<<< Updated upstream
     - target: {fileID: 536776061368520119, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+=======
+    - target: {fileID: 2023555558, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleQuestPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 536776061368520119, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 10837236554765098}
+    - target: {fileID: 536776061368520119, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMiniMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 536776061540838279, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 10837236554765098}
+    - target: {fileID: 536776061540838279, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993214063911922591, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 10837236554765098}
@@ -601,10 +625,24 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 10837236554765098}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 8457502953827120285, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleInventory
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 9198069560704119311, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8505749858539024537}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 9198069560704119311, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Shoot
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cec29b2eb6336f4fb1b8245a9909d04, type: 3}
 --- !u!1 &283663460 stripped
